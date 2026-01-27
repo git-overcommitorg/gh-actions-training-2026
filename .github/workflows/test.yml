@@ -46,8 +46,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Say hello (Servus Dave)"
-        run: echo $GREETING $MY_NAME
-  
+        run: |
+          echo $GREETING $MY_NAME
+          echo "${{env.GREETING}} ${{env.MY_NAME}}"
+        if: ${{ env.MY_NAME == 'Dave' }}
   Echo2:
     runs-on: ubuntu-latest
     env:
