@@ -2,6 +2,13 @@ name: Call composite action
 
 on: 
   workflow_dispatch:
+    inputs:
+      greeting:
+        required: true
+        description: Add your greeting
+      name:
+        required: true
+        description: Please name the person to greet
   
 jobs:
   Call_composite_action:
@@ -13,7 +20,7 @@ jobs:
         id: callCompositeAction
         uses: ./.github/actions/demo-composite-actions
         with:
-          greeting: Good evening
-          name: Dave
+          greeting: ${{inputs.greeting}}
+          name: ${{inputs.name}}
       - name: Print output from last step
         run: echo "${{steps.callCompositeAction.outputs.full-greeting}}"
