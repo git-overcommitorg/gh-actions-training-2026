@@ -21,12 +21,15 @@ on:
   workflow_dispatch:
     inputs:
       yourName:
+        description: Whats your name man?
         required: true
         default: Zeeshan
       YouGood:
+        description: You good man?
         required: true
         type: boolean
       WhatsUp:
+        description: Whats uuuuuup
         required: false
         type: choice
         options:
