@@ -1,0 +1,17 @@
+name: test me
+
+on:
+  # Webhook Event
+  push:
+    branches:
+      - main
+      - feat/*
+  # Schedule Event
+  # Manual event
+
+jobs:
+  Echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello
+        run: echo Hello World
