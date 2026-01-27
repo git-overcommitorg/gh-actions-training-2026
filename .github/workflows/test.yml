@@ -14,7 +14,25 @@ on:
       - opened
       - closed
   # Schedule Event
+  schedule:
+    - cron: 0 0 * * *
+    - cron: 0 9 * * 0
   # Manual event
+  workflow_dispatch:
+    inputs:
+      yourName:
+        required: true
+        default: Zeeshan
+      YouGood:
+        required: true
+        type: boolean
+      WhatsUp:
+        required: false
+        type: choice
+        options:
+          - Whats Uuuuuup
+          - Not a lot
+          - Meh
 
 jobs:
   Echo:
