@@ -37,12 +37,29 @@ on:
           - Not a lot
           - Meh
 
+env:
+  MY_NAME: Dave
+  GREETING: Servus
+
 jobs:
   Echo:
     runs-on: ubuntu-latest
     steps:
-      - name: Say hello
-        run: echo Hello World
+      - name: "Say hello (Servus Dave)"
+        run: echo $GREETING $MY_NAME
+  
+  Echo2:
+    runs-on: ubuntu-latest
+    env:
+      MY_NAME: Dave
+      GREETING: Good morning
+    steps:
+      - name: "Say hello (Good morning Dave)"
+        run: echo $GREETING $MY_NAME
+      - name: "Say hello (Good afternoon Dave)"
+        env:
+          GREETING: Good afternoon
+        run: echo $GREETING $MY_NAME
   Job2:
     runs-on: ubuntu-latest
     needs: [Echo]
