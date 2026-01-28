@@ -1,0 +1,39 @@
+name: Demo env
+
+on:
+  workflow_dispatch:
+    inputs:
+      envVar:
+        type: choice
+        description: Environment
+        options:
+          - Test
+          - Staging
+          - Production
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: echo Building
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: echo Testing
+  deployment:
+    runs-on: ubuntu-latest
+    needs: [build, test]
+    # environment: ${{inputs.envVar}}
+    environment:
+      name: ${{inputs.envVar}}
+      url: ${{vars.APP_URL}}
+    steps:
+      - name: Deploying
+        run: echo Feature is being deployed
+        if: ${{vars.FEATURE_FLAG == 'true'}}
+      - name: Show message
+        run: echo Feature not being deployed
+        if: ${{vars.FEATURE_FLAG == 'false'}}
+      - name: Show db password
+        run: echo ${{secrets.DB_PASSWORD}}
