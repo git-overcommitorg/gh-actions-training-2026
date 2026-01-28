@@ -45,7 +45,6 @@ jobs:
         if: ${{env.VAR1}}
         run: echo $VAR2
       - name: step2
-        if: ${{env.VAR1}}
         run: echo ${{github.actor}}
   job2:
     runs-on: ubuntu-latest
