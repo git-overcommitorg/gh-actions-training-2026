@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: step1
-        if: ${{env.VAR1}}
+        if: ${{env.VAR1 == 'true'}}
         run: echo $VAR2
       - name: step2
         run: echo ${{github.actor}}
